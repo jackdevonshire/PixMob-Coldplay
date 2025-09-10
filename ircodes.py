@@ -1,3 +1,8 @@
+"""
+    IR codes for PixMob Red Flash wristbands
+"""
+
+
 import base64
 
 class Color:

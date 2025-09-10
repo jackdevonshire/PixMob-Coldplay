@@ -56,7 +56,7 @@ class SongPlayer:
             if wait_time > 0:
                 time.sleep(wait_time)
 
-            print(f"At {beat_time:.2f}s: Sending IR code {colour_ir_code} (beat {index+1})")
+            print(f"At {beat_time:.2f}s: Beat {index+1}")
             try:
                 if colour_ir_code:
                     self.broadlink_client.send_ir_signal(colour_ir_code)

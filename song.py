@@ -1,8 +1,10 @@
 from ircodes import red, green, light_green, yellow_green, blue, light_blue, magenta, yellow, pink, orange, white, turquoise
 import random
-
+from enum import Enum
 """
-    Defines colours that should play for a song part
+    This class is used to help define a song, 
+    and what colours on the wristband should be playing for
+    each beat of the song.
 """
 class SongInstruction():
     def __init__(self, beat, colour_ir_code):
@@ -16,37 +18,37 @@ class SongSection():
         self.colours = colours if colours is not None else []
 
     @staticmethod
-    def single_beat(beat, colour):
-        return [SongInstruction(beat, colour.get_ir_signal())]
+    def single_beat(beat, colour, fade=0):
+        return [SongInstruction(beat, colour.get_ir_signal(fade))]
 
     @staticmethod
-    def multiple_beats_single_colour(start_beat, end_beat, colour):
-        return [SongInstruction(beat, colour.get_ir_signal()) for beat in range(start_beat, end_beat + 1)]
+    def multiple_beats_single_colour(start_beat, end_beat, colour, fade=0):
+        return [SongInstruction(beat, colour.get_ir_signal(fade)) for beat in range(start_beat, end_beat + 1)]
 
     @staticmethod
-    def multiple_beats_random_colour(start_beat, end_beat, colours):
+    def multiple_beats_random_colour(start_beat, end_beat, colours, fade=0):
         instructions = []
         for beat in range(start_beat, end_beat + 1):
             colour = random.choice(colours)
-            instructions.append(SongInstruction(beat, colour.get_ir_signal()))
+            instructions.append(SongInstruction(beat, colour.get_ir_signal(fade)))
         return instructions
 
     @staticmethod
-    def every_nth_beat_single_colour(start_beat, end_beat, n, colour):
+    def every_nth_beat_single_colour(start_beat, end_beat, n, colour, fade=0):
         instructions = []
         beat = start_beat
         while beat <= end_beat:
-            instructions.append(SongInstruction(beat, colour.get_ir_signal()))
+            instructions.append(SongInstruction(beat, colour.get_ir_signal(fade)))
             beat += n
         return instructions
     
     @staticmethod
-    def every_nth_beat_multiple_colours(start_beat, end_beat, n, colours):
+    def every_nth_beat_multiple_colours(start_beat, end_beat, n, colours, fade=0):
         instructions = []
         beat = start_beat
         while beat <= end_beat:
             colour = random.choice(colours)
-            instructions.append(SongInstruction(beat, colour.get_ir_signal()))
+            instructions.append(SongInstruction(beat, colour.get_ir_signal(fade)))
             beat += n
         return instructions
 

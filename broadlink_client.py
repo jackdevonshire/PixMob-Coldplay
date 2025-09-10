@@ -1,7 +1,5 @@
-#!/usr/bin/env python3
 """
-PixMob Red Flash
-Simple script to flash red 5 times using Broadlink RM4 Pro
+    Basic client to send IR signals using a Broadlink RM4 Pro device
 """
 
 import broadlink
