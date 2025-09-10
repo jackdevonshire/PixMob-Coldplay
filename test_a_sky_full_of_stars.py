@@ -74,13 +74,3 @@ if __name__ == "__main__":
     song = A_Sky_Full_Of_Stars()
     player = SongPlayer(latency_compensation=0.12)  # Adjust latency compensation as needed
     player.play(song)
-
-"""
-
-fades bit reakky natching the beat
-
-
-
-
-
-"""
