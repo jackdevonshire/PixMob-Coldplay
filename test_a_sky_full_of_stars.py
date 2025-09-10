@@ -26,7 +26,7 @@ class A_Sky_Full_Of_Stars(Song):
                 SongSection.single_beat(96, magenta, fade=0),
 
                 # Chorus 1: explode with all colours, fade 0 (shortest burst)
-                SongSection.multiple_beats_random_colour(160, 210, [red, green, light_green, yellow_green, blue, light_blue, magenta, yellow, pink, orange, white, turquoise], fade=0),
+                SongSection.multiple_beats_random_colour(159, 210, [red, green, light_green, yellow_green, blue, light_blue, magenta, yellow, pink, orange, white, turquoise], fade=0),
 
                 # Winds back down: soft pink and light_green, fade 5
                 SongSection.every_nth_beat_multiple_colours(211, 271, 4, [pink, light_green], fade=5),

@@ -1,0 +1,25 @@
+import broadlink
+import base64
+import time
+import random
+
+RED = base64.b64decode("JgAYAC4uFxcXLhdcF0UuFxcXFy4uXC5cFwANBQ==")
+GREEN = base64.b64decode("JgAYAC4uFxcXFy5cFy4XLhcuFy4uXC5cFwANBQ==")
+LLIGHT_GREEN = base64.b64decode("JgAcABcXFxcuLi5cFy4XLhcuFxcXLhdFFy4XLhcADQUAAAAAAAAAAAAAAAA=")
+YELLOW_GREEN = base64.b64decode("JgAaABcXFxcuLi5cF0UXFxcuFy4XFxdFLlwXAA0FAAAAAAAAAAAAAAAAAAA=")
+BLUE = base64.b64decode("JgAeABcXF0UuFxdcFy4XFxcuLhcXLhcXFxcXFxdFFwANBQAAAAAAAAAAAAA=")
+LIGHT_BLUE = base64.b64decode("JgAeABcXF0UuFxdcFy4XFxcuFxcXFxcXFxcuLhdFFwANBQAAAAAAAAAAAAA=")
+MAGENTA = base64.b64decode("JgAaABcXFxcuLi5cF0UuRRcXFxcuRRcXF0UXAA0FAAAAAAAAAAAAAAAAAAA=")
+YELLOW = base64.b64decode("JgAaABcXF0UuFxdcFy4XFxdcLi4XRRcXF0UXAA0FAAAAAAAAAAAAAAAAAAA=")
+PINK = base64.b64decode("JgAaABcXF0UuFxdcFy4XFxdcLi4XRRcXF0UXAA0FAAAAAAAAAAAAAAAAAAA=")
+ORANGE = base64.b64decode("JgAaABcXFxcuLi5cF0UXFxcuFxcXLhdFLlwXAA0FAAAAAAAAAAAAAAAAAAA=")
+WHITE = base64.b64decode("JgAaABcXF0UuFxdcFy4XFxdcLi4XRRcuFy4XAA0FAAAAAAAAAAAAAAAAAAA=")
+TURQ = base64.b64decode("JgAaABcXFxcuLi5cFy4XFy4uFy4uXBcXF0UXAA0FAAAAAAAAAAAAAAAAAAA=")
+ALL_COLOURS = [RED, GREEN, LLIGHT_GREEN, YELLOW_GREEN, BLUE, LIGHT_BLUE, MAGENTA, YELLOW, PINK, ORANGE, WHITE, TURQ]
+
+device = broadlink.discover(timeout=3)[0]
+device.auth()
+while True:
+    time.sleep(0.2)
+    colour_signal = random.choice(ALL_COLOURS)
+    device.send_data(colour_signal)
